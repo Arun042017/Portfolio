@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arun Kumar Reddy — GTM Technology Engineer</title>
+<meta name="description" content="GTM Technology Engineer — CRM, enrichment, and AI tooling that powers revenue teams." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0B0E14;
+    --bg-2: #111620;
+    --panel: #151B26;
+    --line: #232C3B;
+    --ink: #E8EDF4;
+    --muted: #8A97AB;
+    --accent: #2DD4BF;
+    --accent-dim: #1A9183;
+    --gold: #E0B450;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .display { font-family: 'Space Grotesk', sans-serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,14,20,0.78);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  nav.scrolled { border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { font-family: 'Space Grotesk'; font-weight: 700; letter-spacing: .5px; font-size: 16px; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 13px; color: var(--muted); transition: color .2s; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* HERO */
+  header.hero {
+    min-height: 100vh; display: flex; align-items: center; position: relative;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(45,212,191,0.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 100%, rgba(224,180,80,0.06), transparent 55%);
+  }
+  .grid-bg {
+    position: absolute; inset: 0; z-index: 0; opacity: .35;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+  }
+  .hero-content { position: relative; z-index: 1; width: 100%; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);
+    border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px;
+    margin-bottom: 28px; background: var(--panel);
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  h1 {
+    font-family: 'Space Grotesk'; font-weight: 700;
+    font-size: clamp(40px, 8vw, 84px); line-height: 1.02; letter-spacing: -2px;
+  }
+  h1 .accent { color: var(--accent); }
+  .subhead { font-size: clamp(18px, 3vw, 24px); color: var(--ink); margin-top: 16px; font-weight: 500; }
+  .tagline { color: var(--muted); font-size: 17px; margin-top: 18px; max-width: 560px; }
+  .cta-row { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+  .btn {
+    font-family: 'Space Grotesk'; font-weight: 600; font-size: 14px;
+    padding: 13px 24px; border-radius: 10px; cursor: pointer; transition: all .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary { background: var(--accent); color: #04110F; }
+  .btn-primary:hover { background: #5EEAD9; transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .metrics { display: flex; gap: 40px; margin-top: 56px; flex-wrap: wrap; }
+  .metric .num { font-family: 'Space Grotesk'; font-weight: 700; font-size: 32px; color: var(--ink); }
+  .metric .lbl { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono'; letter-spacing: .5px; }
+
+  /* SECTIONS */
+  section { padding: 100px 0; position: relative; }
+  .sec-label {
+    font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .sec-title { font-family: 'Space Grotesk'; font-weight: 700; font-size: clamp(28px, 5vw, 40px); letter-spacing: -1px; margin-bottom: 8px; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; margin-top: 40px; }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .about-grid p { color: var(--muted); font-size: 17px; margin-bottom: 16px; }
+  .about-grid p strong { color: var(--ink); font-weight: 600; }
+  .info-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 24px; height: fit-content; }
+  .info-row { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .k { color: var(--muted); font-family: 'JetBrains Mono'; font-size: 12px; }
+  .info-row .v { color: var(--ink); font-weight: 500; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+  @media (max-width: 860px) { .skills-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 520px) { .skills-grid { grid-template-columns: 1fr; } }
+  .skill-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px;
+    transition: transform .25s, border-color .25s;
+  }
+  .skill-card:hover { transform: translateY(-4px); border-color: var(--accent-dim); }
+  .skill-card h3 { font-family: 'Space Grotesk'; font-size: 15px; margin-bottom: 14px; color: var(--accent); display: flex; align-items: center; gap: 9px; }
+  .skill-card h3 .ic { width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 13px; color: var(--ink); background: var(--bg-2); border: 1px solid var(--line); border-radius: 7px; padding: 5px 11px; }
+
+  /* TIMELINE */
+  .timeline { margin-top: 48px; position: relative; padding-left: 28px; }
+  .timeline::before { content:''; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--line)); }
+  .tl-item { position: relative; padding-bottom: 40px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before { content:''; position: absolute; left: -27px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+  .tl-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; }
+  .tl-role { font-family: 'Space Grotesk'; font-weight: 600; font-size: 18px; }
+  .tl-co { color: var(--accent); font-size: 14px; font-weight: 500; margin-top: 2px; }
+  .tl-date { font-family: 'JetBrains Mono'; font-size: 12px; color: var(--muted); }
+  .tl-desc { color: var(--muted); font-size: 15px; margin-top: 10px; }
+
+  /* CONTACT */
+  .contact { background: var(--bg-2); border-top: 1px solid var(--line); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 36px; align-items: center; }
+  @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-links a { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); transition: color .2s; }
+  .contact-links a:hover { color: var(--accent); }
+  .contact-links .ci { font-family:'JetBrains Mono'; font-size: 11px; color: var(--accent); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; min-width: 64px; text-align: center; }
+  .resume-box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 30px; text-align: center; }
+  .resume-box h3 { font-family:'Space Grotesk'; font-size: 20px; margin-bottom: 8px; }
+  .resume-box p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+  footer { padding: 32px 0; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 13px; }
+  footer .mono { color: var(--accent); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">AKR<span>.</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-content">
+    <div class="eyebrow mono"><span class="dot"></span> Available for GTM / RevOps roles</div>
+    <h1>Arun Kumar <span class="accent">Reddy</span></h1>
+    <div class="subhead display">GTM Technology Engineer</div>
+    <p class="tagline">I build and run the CRM, enrichment, and AI tooling that powers revenue teams — from Salesforce and HubSpot to Apollo, Lusha, and AI workflows.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="./Arun_Kumar_Reddy_GTM_Resume.pdf" download>Download Resume &#8595;</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="num">6+</div><div class="lbl">YEARS IN GTM TECH</div></div>
+      <div class="metric"><div class="num">2</div><div class="lbl">CRMs OWNED</div></div>
+      <div class="metric"><div class="num">3</div><div class="lbl">ENRICHMENT TOOLS</div></div>
+      <div class="metric"><div class="num">BFSI</div><div class="lbl">+ ENTERPRISE SaaS</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label reveal">01 / About</div>
+    <h2 class="sec-title reveal">Where revenue meets tooling</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a <strong>GTM Technology Engineer</strong> with 6+ years architecting and administering the CRM ecosystems, revenue-intelligence platforms, and sales-automation tooling that go-to-market teams run on.</p>
+        <p>Today I'm the single point of ownership for <strong>Salesforce Sales Cloud</strong> and <strong>HubSpot</strong> at Azentio — administering enrichment tools like <strong>Apollo.io, Lusha, and Sales Navigator</strong>, and embedding AI tooling (<strong>Claude, ChatGPT, Lovable</strong>) into GTM workflows.</p>
+        <p>My work sits at the intersection of systems and selling: clean pipeline data, automated rep workflows, and reporting that leadership actually uses to make decisions.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-row"><span class="k">ROLE</span><span class="v">GTM Tech Engineer</span></div>
+        <div class="info-row"><span class="k">COMPANY</span><span class="v">Azentio Software</span></div>
+        <div class="info-row"><span class="k">LOCATION</span><span class="v">Bangalore, IN</span></div>
+        <div class="info-row"><span class="k">FOCUS</span><span class="v">CRM · RevOps · AI</span></div>
+        <div class="info-row"><span class="k">STATUS</span><span class="v" style="color:var(--accent)">Open to roles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-label reveal">02 / Tech Stack</div>
+    <h2 class="sec-title reveal">Tools I own &amp; operate</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><h3><span class="ic"></span>CRM Platforms</h3><div class="chips"><span class="chip">Salesforce Sales Cloud</span><span class="chip">HubSpot</span></div></div>
+      <div class="skill-card reveal"><h3><span class="ic"></span>Data Enrichment</h3><div class="chips"><span class="chip">Apollo.io</span><span class="chip">Lusha</span><span class="chip">Sales Navigator</span></div></div>
+      <div class="skill-card reveal"><h3><span class="ic"></span>AI Tools</h3><div class="chips"><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Lovable</span></div></div>
+      <div class="skill-card reveal"><h3><span class="ic"></span>Automation</h3><div class="chips"><span class="chip">Salesforce Flows</span><span class="chip">Process Builder</span><span class="chip">Apex</span><span class="chip">HubSpot Sequences</span></div></div>
+      <div class="skill-card reveal"><h3><span class="ic"></span>Analytics</h3><div class="chips"><span class="chip">Reports &amp; Dashboards</span><span class="chip">Power BI</span><span class="chip">Advanced Excel</span><span class="chip">SQL</span></div></div>
+      <div class="skill-card reveal"><h3><span class="ic"></span>Admin &amp; Dev</h3><div class="chips"><span class="chip">Data Loader</span><span class="chip">Visualforce</span><span class="chip">LWC</span><span class="chip">HTML</span><span class="chip">ETL</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label reveal">03 / Experience</div>
+    <h2 class="sec-title reveal">Six years, three orgs</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <div><div class="tl-role">GTM Technology Engineer</div><div class="tl-co">Azentio Software Private Limited</div></div>
+          <div class="tl-date">MAR 2022 — PRESENT</div>
+        </div>
+        <p class="tl-desc">Sole owner of Salesforce Sales Cloud + HubSpot across BFSI and ERP verticals. Administer Apollo.io, Lusha, and Sales Navigator; embed AI tooling into GTM workflows. Led end-to-end implementation of the NPS tool and the Sales Incentives tool — from data uploads to dashboards used by senior leadership.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <div><div class="tl-role">Consultant — Business Analysis &amp; Salesforce Admin</div><div class="tl-co">Syngene International Limited</div></div>
+          <div class="tl-date">FEB 2020 — MAR 2022</div>
+        </div>
+        <p class="tl-desc">Salesforce org administration: custom objects, Flows, Process Builder, approval processes. Ran large-scale data clean-up (dedup, parent-subsidiary mapping) and built executive reporting — MERM decks and monthly CEO/CCO reports.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-top">
+          <div><div class="tl-role">MIS Executive — Reporting</div><div class="tl-co">First IPO (Curatal)</div></div>
+          <div class="tl-date">DEC 2018 — JAN 2020</div>
+        </div>
+        <p class="tl-desc">Built reports and dashboards for leadership decision-making, maintained MIS systems and reporting tools, trained end users, and drove process improvements in data management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-label reveal">04 / Contact</div>
+    <h2 class="sec-title reveal">Let's talk GTM tech</h2>
+    <div class="contact-grid">
+      <div class="contact-links reveal">
+        <a href="mailto:arunmachunuru@gmail.com"><span class="ci mono">EMAIL</span><span>arunmachunuru@gmail.com</span></a>
+        <a href="tel:+918466967321"><span class="ci mono">PHONE</span><span>+91 84669 67321</span></a>
+        <a href="#"><span class="ci mono">LINKEDIN</span><span>Add your LinkedIn URL</span></a>
+        <a href="https://github.com/Arun042017"><span class="ci mono">GITHUB</span><span>github.com/Arun042017</span></a>
+      </div>
+      <div class="resume-box reveal">
+        <h3>Grab my resume</h3>
+        <p>One page. GTM technology, CRM ownership, and revenue tooling.</p>
+        <a class="btn btn-primary" href="./Arun_Kumar_Reddy_GTM_Resume.pdf" download style="justify-content:center;width:100%;">Download PDF &#8595;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">&copy; <span id="yr"></span> Arun Kumar Reddy &middot; Built with <span class="mono">HTML + CSS</span> &middot; Hosted on GitHub Pages</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
+  const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el,i) => { el.style.transitionDelay = (i%4*0.06)+'s'; io.observe(el); });
+</script>
+</body>
+</html>
